@@ -76,7 +76,7 @@ namespace IndustrialParkHans
             addSectionDialog.ShowDialog();
             if (addSectionDialog.OKed)
             {
-                saveFileManager.Add(addSectionDialog.section);
+                saveFileManager.AddNew(addSectionDialog.section);
 
                 Block b = saveFileManager.Blocks.Last();
                 if (b is Section_Scene scene)

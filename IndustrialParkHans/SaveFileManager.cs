@@ -77,7 +77,7 @@ namespace IndustrialParkHans.BlockTypes
                     default:
                         if (currentSection != "\0\0\0\0")
                             Blocks.Add(new Section_Scene(binaryReader, currentSection));
-                        else 
+                        else
                             continueLoop = false;
                         break;
                 }
@@ -120,13 +120,13 @@ namespace IndustrialParkHans.BlockTypes
 
             writer.Write(bytes.ToArray());
 
-            while(writer.BaseStream.Length < 0x14040)
+            while (writer.BaseStream.Length < 0x14040)
                 writer.Write((byte)0);
 
             writer.Close();
         }
 
-        public void Add(Section section)
+        public void AddNew(Section section)
         {
             switch (section)
             {
@@ -145,7 +145,7 @@ namespace IndustrialParkHans.BlockTypes
                 case Section.PREF:
                     Blocks.Add(new Section_PREF());
                     break;
-                    case Section.ROOM:
+                case Section.ROOM:
                     Blocks.Add(new Section_ROOM());
                     break;
                 case Section.SFIL:
