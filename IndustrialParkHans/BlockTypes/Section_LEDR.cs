@@ -17,21 +17,30 @@ namespace IndustrialParkHans.BlockTypes
         public int Unknown2 { get; set; }
         [Description("Unknown function.")]
         public int Unknown3 { get; set; }
-        [Description("Image displayed as thumbnail of save file.")]
+        [Description("Image displayed as thumbnail of save file. Always set to None in Scooby.")]
         public ThumbIcon ThumbnailIcon { get; set; }
         [Description("Unknown function.")]
         public int Unknown4 { get; set; }
         [Description("Unknown function.")]
         public string UnknownText { get; set; }
 
-        public Section_LEDR()
+        private Section_LEDR()
         {
             sectionIdentifier = Section.LEDR;
             LevelLabel = "None";
             UnknownText = "--TakeMeToYourLeader--";
         }
 
-        public Section_LEDR(BinaryReader binaryReader)
+        public Section_LEDR(Game game)
+        {
+            if (game == Game.Scooby)
+                ThumbnailIcon = ThumbIcon.None;
+            sectionIdentifier = Section.LEDR;
+            LevelLabel = "None";
+            UnknownText = "--TakeMeToYourLeader--";
+        }
+
+        public Section_LEDR(BinaryReader binaryReader, Game game)
         {
             sectionIdentifier = Section.LEDR;
             blockSize = binaryReader.ReadInt32().Switch();
@@ -54,9 +63,14 @@ namespace IndustrialParkHans.BlockTypes
             Unknown1 = binaryReader.ReadInt32().Switch();
             Unknown2 = binaryReader.ReadInt32().Switch();
             Unknown3 = binaryReader.ReadInt32().Switch();
-            ThumbnailIcon = (ThumbIcon)binaryReader.ReadByte();
-            binaryReader.BaseStream.Position += 3;
-            Unknown4 = binaryReader.ReadInt32().Switch();
+            if (game == Game.Scooby)
+                ThumbnailIcon = ThumbIcon.None;
+            else
+            {
+                ThumbnailIcon = (ThumbIcon)binaryReader.ReadByte();
+                binaryReader.BaseStream.Position += 3;
+                Unknown4 = binaryReader.ReadInt32().Switch();
+            }
 
             UnknownText = "";
             
@@ -87,10 +101,15 @@ namespace IndustrialParkHans.BlockTypes
             listBytes.AddRange(Unknown1.Reverse());
             listBytes.AddRange(Unknown2.Reverse());
             listBytes.AddRange(Unknown3.Reverse());
-            listBytes.Add((byte)ThumbnailIcon);
-            listBytes.Add(0);
-            listBytes.Add(0);
-            listBytes.Add(0);
+
+            if (ThumbnailIcon != ThumbIcon.None)
+            {
+                listBytes.Add((byte)ThumbnailIcon);
+                listBytes.Add(0);
+                listBytes.Add(0);
+                listBytes.Add(0);
+            }
+
             listBytes.AddRange(Unknown4.Reverse());
 
             if (UnknownText.Length > 0xA8)

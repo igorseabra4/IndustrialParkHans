@@ -8,6 +8,12 @@ namespace IndustrialParkHans.BlockTypes
     {
         [Description("Unknown function.")]
         public string UnknownText { get; set; }
+        [Description("Amount of bytes padding the end of the section. Recommended to leave untouched.")]
+        public int PaddingSize
+        {
+            get => blockSize - bytesUsed;
+            set => blockSize = value + bytesUsed;
+        }
 
         public Section_SFIL()
         {
@@ -46,7 +52,7 @@ namespace IndustrialParkHans.BlockTypes
 
             bytesUsed = listBytes.Count - previousSize;
 
-            for (int i = bytesUsed; i < 36008; i++)
+            for (int i = bytesUsed; i < blockSize; i++)
                 listBytes.Add(0xBF);
 
             blockSize = listBytes.Count - previousSize;

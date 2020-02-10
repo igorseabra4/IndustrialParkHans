@@ -7,7 +7,7 @@ namespace IndustrialParkHans.BlockTypes
 {
     public class Section_CNTR : Block
     {
-        private const int dataSize = 0x1E0;
+        private readonly int dataSize;
 
         private byte[] _data;
         public byte[] Data
@@ -45,14 +45,31 @@ namespace IndustrialParkHans.BlockTypes
             }
         }
 
-        public Section_CNTR()
+        private Section_CNTR()
         {
-            sectionIdentifier = Section.CNTR;
+        }
+
+        public Section_CNTR(Game game)
+        {
+            if (game == Game.BFBB)
+                dataSize = 0x1E0;
+            else if (game != Game.Scooby)
+                dataSize = 0x190;
+            else
+                throw new Exception("Cannot create CNTR block for Scooby.");
+
             _data = new byte[dataSize];
         }
 
-        public Section_CNTR(BinaryReader binaryReader)
+        public Section_CNTR(BinaryReader binaryReader, Game game)
         {
+            if (game == Game.BFBB)
+                dataSize = 0x1E0;
+            else if (game != Game.Scooby)
+                dataSize = 0x190;
+            else
+                throw new Exception("Cannot create CNTR block for Scooby.");
+
             sectionIdentifier = Section.CNTR;
             blockSize = binaryReader.ReadInt32().Switch();
             bytesUsed = binaryReader.ReadInt32().Switch();

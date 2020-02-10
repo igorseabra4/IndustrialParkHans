@@ -1,13 +1,7 @@
 ﻿using IndustrialParkHans.BlockTypes;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace IndustrialParkHans
@@ -29,7 +23,7 @@ namespace IndustrialParkHans
             if (openFile.ShowDialog() == DialogResult.OK)
             {
                 currentFile = openFile.FileName;
-                saveFileManager.ReadFile(openFile.FileName);
+                saveFileManager.ReadFile(openFile.FileName, currentGame, currentPlatform);
                 saveToolStripMenuItem.Enabled = true;
                 saveAsToolStripMenuItem.Enabled = true;
                 groupBox1.Enabled = true;
@@ -39,7 +33,10 @@ namespace IndustrialParkHans
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            saveFileManager.WriteFile(currentFile);
+            saveFileManager.WriteFile(currentFile, currentGame, currentPlatform, out string comment);
+
+            if (!string.IsNullOrEmpty(comment))
+                MessageBox.Show(comment);
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -48,7 +45,7 @@ namespace IndustrialParkHans
             if (saveFile.ShowDialog() == DialogResult.OK)
             {
                 currentFile = saveFile.FileName;
-                saveFileManager.WriteFile(saveFile.FileName);
+                saveToolStripMenuItem_Click(sender, e);
             }
         }
 
@@ -76,7 +73,7 @@ namespace IndustrialParkHans
             addSectionDialog.ShowDialog();
             if (addSectionDialog.OKed)
             {
-                saveFileManager.AddNew(addSectionDialog.section);
+                saveFileManager.AddNew(addSectionDialog.section, currentGame);
 
                 Block b = saveFileManager.Blocks.Last();
                 if (b is Section_Scene scene)
@@ -130,7 +127,19 @@ namespace IndustrialParkHans
                         saveFileManager.Blocks.Add(JsonConvert.DeserializeObject<Section_PLYR>(container.Item2));
                         break;
                     case Section.PREF:
-                        saveFileManager.Blocks.Add(JsonConvert.DeserializeObject<Section_PREF>(container.Item2));
+                        switch (currentGame)
+                        {
+                            case Game.Scooby:
+                                saveFileManager.Blocks.Add(JsonConvert.DeserializeObject<Section_PREF_Scoo>(container.Item2));
+                                break;
+                            case Game.Movie:
+                            case Game.Incredibles:
+                                saveFileManager.Blocks.Add(JsonConvert.DeserializeObject<Section_PREF_TSSM>(container.Item2));
+                                break;
+                            case Game.BFBB:
+                                saveFileManager.Blocks.Add(JsonConvert.DeserializeObject<Section_PREF_BFBB>(container.Item2));
+                                break;
+                        }
                         break;
                     case Section.ROOM:
                         saveFileManager.Blocks.Add(JsonConvert.DeserializeObject<Section_ROOM>(container.Item2));
@@ -202,14 +211,77 @@ namespace IndustrialParkHans
                 listBoxBlocks.Items[listBoxBlocks.SelectedIndex] = scene.SceneID;
         }
 
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Hans v0.2 is a save file editor for Heavy Iron Studios games by igorseabra4; additional credits go to Seil for figuring out the format in the first place!");
+        }
+
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        private Game currentGame = Game.BFBB;
+        private Platform currentPlatform = Platform.GCN;
+
+        private void scoobyDooToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Hans v0.1 is a SpongeBob Squarepants: Battle For Bikini Bottom save file editor by igorseabra4; additional credits go to Seil for figuring out the format in the first place!");
+            currentGame = Game.Scooby;
+            scoobyDooToolStripMenuItem.Checked = true;
+            battleForBikiniBottomToolStripMenuItem.Checked = false;
+            movieGameToolStripMenuItem.Checked = false;
+            theIncrediblesToolStripMenuItem.Checked = false;
+        }
+
+        private void battleForBikiniBottomToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentGame = Game.BFBB;
+            scoobyDooToolStripMenuItem.Checked = false;
+            battleForBikiniBottomToolStripMenuItem.Checked = true;
+            movieGameToolStripMenuItem.Checked = false;
+            theIncrediblesToolStripMenuItem.Checked = false;
+        }
+
+        private void movieGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentGame = Game.Movie;
+            scoobyDooToolStripMenuItem.Checked = false;
+            battleForBikiniBottomToolStripMenuItem.Checked = false;
+            movieGameToolStripMenuItem.Checked = true;
+            theIncrediblesToolStripMenuItem.Checked = false;
+        }
+
+        private void theIncrediblesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentGame = Game.Incredibles;
+            scoobyDooToolStripMenuItem.Checked = false;
+            battleForBikiniBottomToolStripMenuItem.Checked = false;
+            movieGameToolStripMenuItem.Checked = false;
+            theIncrediblesToolStripMenuItem.Checked = true;
+        }
+
+        private void gameCubeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentPlatform = Platform.GCN;
+            gameCubeToolStripMenuItem.Checked = true;
+            playstation2ToolStripMenuItem.Checked = false;
+            xboxToolStripMenuItem.Checked = false;
+        }
+
+        private void playstation2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentPlatform = Platform.PS2;
+            gameCubeToolStripMenuItem.Checked = false;
+            playstation2ToolStripMenuItem.Checked = true;
+            xboxToolStripMenuItem.Checked = false;
+        }
+
+        private void xboxToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentPlatform = Platform.XBOX;
+            gameCubeToolStripMenuItem.Checked = false;
+            playstation2ToolStripMenuItem.Checked = false;
+            xboxToolStripMenuItem.Checked = true;
         }
     }
 }

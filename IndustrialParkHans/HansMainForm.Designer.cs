@@ -34,6 +34,17 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.scoobyDooToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.battleForBikiniBottomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.movieGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.theIncrediblesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.gameCubeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.playstation2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listBoxBlocks = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonArrowUp = new System.Windows.Forms.Button();
@@ -43,9 +54,7 @@
             this.buttonCopy = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.propertyGridSectionEditor = new System.Windows.Forms.PropertyGrid();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xboxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -53,7 +62,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.gameToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(600, 24);
@@ -76,7 +86,7 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -84,7 +94,7 @@
             // 
             this.saveToolStripMenuItem.Enabled = false;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
@@ -92,9 +102,94 @@
             // 
             this.saveAsToolStripMenuItem.Enabled = false;
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.saveAsToolStripMenuItem.Text = "Save As...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(120, 6);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // closeToolStripMenuItem
+            // 
+            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.closeToolStripMenuItem.Text = "Close";
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            // 
+            // gameToolStripMenuItem
+            // 
+            this.gameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.scoobyDooToolStripMenuItem,
+            this.battleForBikiniBottomToolStripMenuItem,
+            this.movieGameToolStripMenuItem,
+            this.theIncrediblesToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.gameCubeToolStripMenuItem,
+            this.playstation2ToolStripMenuItem,
+            this.xboxToolStripMenuItem});
+            this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
+            this.gameToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.gameToolStripMenuItem.Text = "Settings";
+            // 
+            // scoobyDooToolStripMenuItem
+            // 
+            this.scoobyDooToolStripMenuItem.Name = "scoobyDooToolStripMenuItem";
+            this.scoobyDooToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.scoobyDooToolStripMenuItem.Text = "Scooby-Doo: No100F";
+            this.scoobyDooToolStripMenuItem.Click += new System.EventHandler(this.scoobyDooToolStripMenuItem_Click);
+            // 
+            // battleForBikiniBottomToolStripMenuItem
+            // 
+            this.battleForBikiniBottomToolStripMenuItem.Checked = true;
+            this.battleForBikiniBottomToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.battleForBikiniBottomToolStripMenuItem.Name = "battleForBikiniBottomToolStripMenuItem";
+            this.battleForBikiniBottomToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.battleForBikiniBottomToolStripMenuItem.Text = "Battle For Bikini Bottom";
+            this.battleForBikiniBottomToolStripMenuItem.Click += new System.EventHandler(this.battleForBikiniBottomToolStripMenuItem_Click);
+            // 
+            // movieGameToolStripMenuItem
+            // 
+            this.movieGameToolStripMenuItem.Name = "movieGameToolStripMenuItem";
+            this.movieGameToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.movieGameToolStripMenuItem.Text = "Movie Game";
+            this.movieGameToolStripMenuItem.Click += new System.EventHandler(this.movieGameToolStripMenuItem_Click);
+            // 
+            // theIncrediblesToolStripMenuItem
+            // 
+            this.theIncrediblesToolStripMenuItem.Name = "theIncrediblesToolStripMenuItem";
+            this.theIncrediblesToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.theIncrediblesToolStripMenuItem.Text = "The Incredibles";
+            this.theIncrediblesToolStripMenuItem.Click += new System.EventHandler(this.theIncrediblesToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(196, 6);
+            // 
+            // gameCubeToolStripMenuItem
+            // 
+            this.gameCubeToolStripMenuItem.Checked = true;
+            this.gameCubeToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.gameCubeToolStripMenuItem.Name = "gameCubeToolStripMenuItem";
+            this.gameCubeToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.gameCubeToolStripMenuItem.Text = "GameCube";
+            this.gameCubeToolStripMenuItem.Click += new System.EventHandler(this.gameCubeToolStripMenuItem_Click);
+            // 
+            // playstation2ToolStripMenuItem
+            // 
+            this.playstation2ToolStripMenuItem.Name = "playstation2ToolStripMenuItem";
+            this.playstation2ToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.playstation2ToolStripMenuItem.Text = "Playstation 2";
+            this.playstation2ToolStripMenuItem.Click += new System.EventHandler(this.playstation2ToolStripMenuItem_Click);
             // 
             // listBoxBlocks
             // 
@@ -192,24 +287,12 @@
             this.propertyGridSectionEditor.TabIndex = 3;
             this.propertyGridSectionEditor.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.propertyGridSectionEditor_PropertyValueChanged);
             // 
-            // toolStripSeparator1
+            // xboxToolStripMenuItem
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // closeToolStripMenuItem
-            // 
-            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.closeToolStripMenuItem.Text = "Close";
-            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            this.xboxToolStripMenuItem.Name = "xboxToolStripMenuItem";
+            this.xboxToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.xboxToolStripMenuItem.Text = "Xbox";
+            this.xboxToolStripMenuItem.Click += new System.EventHandler(this.xboxToolStripMenuItem_Click);
             // 
             // HansMainForm
             // 
@@ -251,6 +334,15 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem battleForBikiniBottomToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem movieGameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem scoobyDooToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem theIncrediblesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem gameCubeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem playstation2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem xboxToolStripMenuItem;
     }
 }
 

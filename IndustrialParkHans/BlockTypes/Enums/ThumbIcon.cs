@@ -14,6 +14,7 @@
         KelpForest,
         FlyingDutchmansGraveyard,
         SpongeBobsDream,
-        ChumBucketLab
+        ChumBucketLab,
+        None = -1
     }
 }

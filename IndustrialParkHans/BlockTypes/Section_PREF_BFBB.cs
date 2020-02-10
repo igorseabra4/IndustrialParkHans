@@ -4,15 +4,8 @@ using System.IO;
 
 namespace IndustrialParkHans.BlockTypes
 {
-    public enum SoundMode
-    {
-        Mono, Stereo
-    }
-    public enum Rumble
-    {
-        Off, On
-    }
-    public class Section_PREF : Block
+
+    public class Section_PREF_BFBB : Block
     {
         public SoundMode SoundMode { get; set; }
         [Description("0 to 1.")]
@@ -21,12 +14,12 @@ namespace IndustrialParkHans.BlockTypes
         public float SfxVolume { get; set; }
         public Rumble Rumble { get; set; }
 
-        public Section_PREF()
+        public Section_PREF_BFBB()
         {
             sectionIdentifier = Section.PREF;
         }
 
-        public Section_PREF(BinaryReader binaryReader)
+        public Section_PREF_BFBB(BinaryReader binaryReader)
         {
             sectionIdentifier = Section.PREF;
             blockSize = binaryReader.ReadInt32().Switch();
@@ -52,7 +45,7 @@ namespace IndustrialParkHans.BlockTypes
             listBytes.AddRange(MusicVolume.Reverse());
             listBytes.AddRange(SfxVolume.Reverse());
             listBytes.AddRange(((int)Rumble).Reverse());
-
+            
             bytesUsed = listBytes.Count - previousSize;
 
             for (int i = bytesUsed; i < 0x20; i++)

@@ -54,17 +54,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlockTypes\Block.cs" />
+    <Compile Include="BlockTypes\Enums\Rumble.cs" />
+    <Compile Include="BlockTypes\Section_PREF_Scoo.cs" />
+    <Compile Include="BlockTypes\Section_PREF_TSSM.cs" />
     <Compile Include="BlockTypes\Section_SFIL.cs" />
     <Compile Include="BlockTypes\Section_PLYR.cs" />
     <Compile Include="BlockTypes\Section_CNTR.cs" />
     <Compile Include="BlockTypes\Section_Scene.cs" />
     <Compile Include="BlockTypes\Section_SVID.cs" />
-    <Compile Include="BlockTypes\Section_PREF.cs" />
+    <Compile Include="BlockTypes\Section_PREF_BFBB.cs" />
     <Compile Include="BlockTypes\Section_ROOM.cs" />
     <Compile Include="BlockTypes\Section_LEDR.cs" />
     <Compile Include="BlockTypes\Section_GDAT.cs" />
     <Compile Include="BlockTypes\Enums\Section.cs" />
     <Compile Include="BlockTypes\Enums\ThumbIcon.cs" />
+    <Compile Include="BlockTypes\Enums\SoundMode.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="AddSectionDialog.cs">
       <SubType>Form</SubType>
@@ -72,6 +76,7 @@
     <Compile Include="AddSectionDialog.Designer.cs">
       <DependentUpon>AddSectionDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="BlockTypes\Enums\Game.cs" />
     <Compile Include="SaveFileManager.cs" />
     <Compile Include="HansMainForm.cs">
       <SubType>Form</SubType>
